@@ -7,6 +7,15 @@
 
 # Note: this is a common interview question
 
+for n in range(1, 101):
+	if n % 3 == 0 and n % 5 == 0:
+		print('FizzBuzz')
+	elif n % 3 == 0:
+		print("Fizz")
+	elif n % 5 == 0:
+		print('Buzz')
+	else:
+		print(n)
 
 """
 python3 23fizzbuzz.py

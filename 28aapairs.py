@@ -7,6 +7,20 @@
 
 # Hint: if you get stuck for more than 10 minutes, get help
 
+aalist = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 
+'L', 'M' ,'N', 'P','Q', 'R', 'S', 'T', 'V', 'W', 'Y']
+total = 0
+x = len(aalist)
+for i in range(x):
+	for j in range(x):
+		if j <= i:
+			continue
+		else: 
+			print(aalist[i], aalist[j])
+			total += 1
+print(total)
+
+
 
 """
 python3 28aapairs.py

@@ -6,6 +6,13 @@
 
 # Note: you may not import math or any other library
 
+SUM = 0
+FACT = 1
+n = 5
+for i in range(1, n+1):
+	SUM += i
+	FACT *= i
+print(n, SUM, FACT)
 
 """
 python3 22sumfac.py

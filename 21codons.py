@@ -6,6 +6,9 @@
 
 dna = 'ATAGCGAATATCTCTCATGAGAGGGAA'
 
+for n in range(0,len(dna),3):
+	x = slice(n, 3+n, 1)
+	print(dna[x])
 
 """
 python3 21codons.py
