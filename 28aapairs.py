@@ -6,17 +6,15 @@
 # Also print out how many combinations there are
 
 # Hint: if you get stuck for more than 10 minutes, get help
-
-aalist = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 
-'L', 'M' ,'N', 'P','Q', 'R', 'S', 'T', 'V', 'W', 'Y']
+mystring = "ACDEFGHIKLMNPQRSTVWY"
 total = 0
-x = len(aalist)
+x = len(mystring)
 for i in range(x):
 	for j in range(x):
-		if j <= i:
+		if mystring[j] <= mystring[i]:
 			continue
 		else: 
-			print(aalist[i], aalist[j])
+			print(mystring[i], mystring[j])
 			total += 1
 print(total)
 

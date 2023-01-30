@@ -11,19 +11,28 @@
 AT_counts = 0
 total = 0
 mystring = ""
+seq = 30
 
 import random
-mylist = ['A', 'T', 'C', 'G']
-seq = random.choices(mylist, weights = [3, 3, 2, 2], k = 30) # 60% AT
-for n in range(len(seq)):
-	if seq[n] == 'A' or seq[n] == 'T':
+
+for i in range(seq):
+	r = random.randint(1,10)
+	if r == 1 or r == 2 or r == 3:
+		mystring += 'A'
+	elif r == 4 or r == 5 or r == 6:
+		mystring += 'T'
+	elif r == 7 or r == 8:
+		mystring += 'C'
+	else:
+		mystring += 'G'
+
+for n in range(len(mystring)):
+	if mystring[n] == 'A' or mystring[n] == 'T':
 		AT_counts += 1
 		total += 1
-		mystring += seq[n]
 	else:
 		total += 1
-		mystring += seq[n]
-
+		
 AT_content = AT_counts / total
 
 print(len(mystring), AT_content, mystring)

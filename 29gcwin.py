@@ -12,12 +12,10 @@
 # Consider the pros/cons of this algorithm vs. nested loops
 
 seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
-
 w = 11
 x = len(seq)
 
 for i in range(x-w+1):
-
 	CG_counts = 0
 	for j in range(i , i + w):
 		if seq[j] == "C" or seq[j] == "G":
@@ -26,7 +24,6 @@ for i in range(x-w+1):
 			continue
 	CG_content = CG_counts / w
 	print(i, seq[i:j], round(CG_content, 4))
-
 
 """
 python3 26gcwin.py

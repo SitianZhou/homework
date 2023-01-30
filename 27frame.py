@@ -11,15 +11,9 @@ dna = 'ATGGCCTTT'
 pos = 0
 x = len(dna)
 for n in range(x):
-	
 	frame = pos % 3
 	print(pos, frame, dna[n])
 	pos += 1
-
-
-
-
-
 
 
 """
