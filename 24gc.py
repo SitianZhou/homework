@@ -2,6 +2,7 @@
 
 # Write a program that computes the GC% of a DNA sequence
 # Format the output for 2 decimal places
+import math
 
 dna = 'ACAGAGCCAGCAGATATACAGCAGATACTAT'
 
@@ -12,11 +13,15 @@ for n in range(len(dna)):
 		CG_counts += 1
 		total += 1
 	else: 
-		total +=1
+		total += 1
 
 CG_content = CG_counts / total
 
-print(round(CG_content, 2))
+# rounding
+x = CG_content*100 - int(CG_content*100)
+if x < 0.5: print(math.floor(CG_content*100)/100)
+else:        print(math.ceil(CG_content*100)/100)
+
 
 
 

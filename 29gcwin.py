@@ -10,12 +10,14 @@
 # Then 'move' the window by adding 1 letter on one side
 # And subtracting 1 letter from the other side
 # Consider the pros/cons of this algorithm vs. nested loops
+import math
 
 seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
 w = 11
 x = len(seq)
 
-for i in range(x-w+1):
+# calculating GC content
+for i in range(0, x-w+1):
 	CG_counts = 0
 	for j in range(i , i + w):
 		if seq[j] == "C" or seq[j] == "G":
@@ -23,7 +25,13 @@ for i in range(x-w+1):
 		else:
 			continue
 	CG_content = CG_counts / w
-	print(i, seq[i:j], round(CG_content, 4))
+
+	# round to 4 sig fig
+	y = CG_content*10000 - int(CG_content*10000)
+	print(i, seq[i:j+1], end = ' ')
+	if y < 0.5: print(math.floor(CG_content*10000)/10000)
+	else:       print(math.ceil(CG_content*10000)/10000)
+
 
 """
 python3 26gcwin.py
