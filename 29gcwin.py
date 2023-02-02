@@ -10,7 +10,6 @@
 # Then 'move' the window by adding 1 letter on one side
 # And subtracting 1 letter from the other side
 # Consider the pros/cons of this algorithm vs. nested loops
-import math
 
 seq = 'ACGACGCAGGAGGAGAGTTTCAGAGATCACGAATACATCCATATTACCCAGAGAGAG'
 w = 11
