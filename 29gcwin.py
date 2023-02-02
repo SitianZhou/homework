@@ -26,12 +26,8 @@ for i in range(0, x-w+1):
 			continue
 	CG_content = CG_counts / w
 
-	# round to 4 sig fig
-	y = CG_content*10000 - int(CG_content*10000)
-	print(i, seq[i:j+1], end = ' ')
-	if y < 0.5: print(math.floor(CG_content*10000)/10000)
-	else:       print(math.ceil(CG_content*10000)/10000)
-
+	print(f'{i} {seq[i:j+1]} {CG_content:.4f}')
+	
 
 """
 python3 26gcwin.py

@@ -17,10 +17,8 @@ for n in range(len(dna)):
 
 CG_content = CG_counts / total
 
-# rounding
-x = CG_content*100 - int(CG_content*100)
-if x < 0.5: print(math.floor(CG_content*100)/100)
-else:        print(math.ceil(CG_content*100)/100)
+print(f'{CG_content:.2f}')
+
 
 
 
