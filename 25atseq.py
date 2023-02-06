@@ -8,31 +8,24 @@
 
 # Note: set random.seed() if you want repeatable random numbers
 
+import random
+
 AT_counts = 0
 total = 0
 mystring = ""
 seq = 30
 
-import random
 
 for i in range(seq):
-	r = random.randint(1,10)
-	if r == 1 or r == 2 or r == 3:
-		mystring += 'A'
-	elif r == 4 or r == 5 or r == 6:
-		mystring += 'T'
-	elif r == 7 or r == 8:
-		mystring += 'C'
-	else:
-		mystring += 'G'
-
-for n in range(len(mystring)):
-	if mystring[n] == 'A' or mystring[n] == 'T':
+	r = random.random()
+	if r < 0.6:
+		mystring += random.choice('AT')
 		AT_counts += 1
 		total += 1
 	else:
+		mystring += random.choice('CG')
 		total += 1
-		
+
 AT_content = AT_counts / total
 
 print(len(mystring), AT_content, mystring)
