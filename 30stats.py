@@ -10,21 +10,14 @@
 import sys
 
 count = 0
-total = 0
-min = float(sys.argv[1])
-max = float(sys.argv[1])
 mylist = []
 
 for i in range(1,len(sys.argv)):
 	count += 1 # Count
-	total += float(sys.argv[i])
 	mylist.append(float(sys.argv[i]))
-	# find min and max
-	if float(i) < min:
-		min = float(sys.argv[i])
-	elif float(i) > max:
-		max = float(sys.argv[i])
-	else: continue
+
+# total
+total = sum(mylist)
 # find mean	
 mean = total/count
 mylist.sort()
@@ -39,8 +32,8 @@ for i in range(1,len(sys.argv)):
 	
 # output
 print(f'Count: {count}')
-print(f'Minimum: {min}')
-print(f'Maximum: {max}')
+print(f'Minimum: {min(mylist)}')
+print(f'Maximum: {max(mylist)}')
 print(f'Mean: {mean:.3f}')
 print(f'Std. dev: {sd:.3f}')
 print(f'Median: {median:.3f}')
