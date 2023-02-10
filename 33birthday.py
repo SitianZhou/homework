@@ -12,21 +12,21 @@
 
 import sys
 import random
+
 total = 0
-for n in range(10000):
-	mylist = []
+for n in range(100000):
+	days = [0]*int(sys.argv[1])
 	found = 0
 	for i in range(int(sys.argv[2])):
-		r = random.randint(1,int(sys.argv[1]))
-		mylist.append(r)
-	
-	for j in range(len(mylist)):
-		for k in range(j+1, len(mylist)):
-			if mylist[j] == mylist[k]:
-				found = 1
-				break
+		r = random.randint(0,int(sys.argv[1])-1)
+		if days[r] == 0:
+			days[r] += 1
+		else:
+			found = 1
+			break
 	total += found
-prob = total / 10000
+
+prob = (total/100000)
 print(f'{prob:.3f}')
 
 

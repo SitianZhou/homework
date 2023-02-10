@@ -13,6 +13,14 @@
 import sys
 import math
 
+# check if all command line values are numbers
+for val in sys.argv[1:]:
+	try:
+		num = float(val)
+	except:
+		print(f'cannot convert {val} to a number')
+		raise
+
 prob_list = []
 H = 0
 
