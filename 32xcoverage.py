@@ -27,12 +27,7 @@ for i in range(read_num):
 	for nt in range(0, read_len):
 		seq[r+nt] += 1
 
-seq_2 = seq[read_len-1:genome_size-read_len]
-genome_size_2 = genome_size - 2*(read_len-1)
-print(f'{min(seq_2)} {max(seq_2)} {sum(seq_2)/genome_size_2:.7}')
-	
-		
-
+print(f'{min(seq[read_len-1:genome_size-read_len])} {max(seq[read_len-1:genome_size-read_len])} {sum(seq[read_len-1:genome_size-read_len])/(genome_size - 2*(read_len-1)):.7}')
 
 
 

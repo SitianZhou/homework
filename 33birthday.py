@@ -13,12 +13,17 @@
 import sys
 import random
 
+input_list = []
+for val in range(1,len(sys.argv)):
+	input_list.append(int(sys.argv[val]))
+
+
 total = 0
 for n in range(100000):
-	days = [0]*int(sys.argv[1])
+	days = [0]*input_list[0]
 	found = 0
-	for i in range(int(sys.argv[2])):
-		r = random.randint(0,int(sys.argv[1])-1)
+	for i in range(input_list[1]):
+		r = random.randint(0,input_list[0]-1)
 		if days[r] == 0:
 			days[r] += 1
 		else:

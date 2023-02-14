@@ -21,8 +21,13 @@ total = sum(mylist)
 # find mean	
 mean = total/count
 mylist.sort()
+
 # find median
-median = mylist[int((len(mylist)-1)/2)]
+mid_pos = len(mylist)
+if len(mylist)%2 == 1:
+	median = mylist[int((mid_pos-1)/2)]
+else:
+	median = (mylist[int(mid_pos/2-1)] + mylist[int(mid_pos/2)])/2
 
 # sd
 squared_tot = 0
@@ -32,8 +37,8 @@ for i in range(1,len(sys.argv)):
 	
 # output
 print(f'Count: {count}')
-print(f'Minimum: {min(mylist)}')
-print(f'Maximum: {max(mylist)}')
+print(f'Minimum: {mylist[0]}')
+print(f'Maximum: {mylist[-1]}')
 print(f'Mean: {mean:.3f}')
 print(f'Std. dev: {sd:.3f}')
 print(f'Median: {median:.3f}')

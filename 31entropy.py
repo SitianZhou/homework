@@ -13,23 +13,25 @@
 import sys
 import math
 
-# check if all command line values are numbers
-for val in sys.argv[1:]:
-	try:
-		num = float(val)
-	except:
-		print(f'cannot convert {val} to a number')
-		raise
-
 prob_list = []
-H = 0
 
-for i in range(1,len(sys.argv)):
-	prob_list.append(float(sys.argv[i]))
-	p_i = float(sys.argv[i])
+for val in range(1,len(sys.argv)):
+	prob_list.append(float(sys.argv[val]))
+
+# check if all command line values are numbers
+for val in prob_list:
+	try: num = float(val)
+	except: raise
+# check if all numbers sum to 1
+assert(sum(prob_list) == 1)
+
+
+H = 0
+for i in range(len(prob_list)):
+	p_i = prob_list[i]
 	H -= p_i*math.log2(p_i)
 
-assert(sum(prob_list) == 1) # make sure prob sum to 1
+
 print(f'{H:.3f}')
 
 """
