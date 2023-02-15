@@ -27,9 +27,9 @@ for i in range(read_num):
 	for nt in range(0, read_len):
 		seq[r+nt] += 1
 
-print(f'{min(seq[read_len-1:genome_size-read_len])}', end = ' ')
-print(f'{max(seq[read_len-1:genome_size-read_len])}', end = ' ')
-print(f'{sum(seq[read_len-1:genome_size-read_len])/(genome_size-2*(read_len-1)):.7}')
+print(f'{min(seq[read_len-1:-(read_len-1)])}', end = ' ')
+print(f'{max(seq[read_len-1:-(read_len-1)])}', end = ' ')
+print(f'{sum(seq[read_len-1:-(read_len-1)])/(genome_size-2*(read_len-1)):.7}')
 
 
 """
