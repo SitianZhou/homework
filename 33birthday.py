@@ -14,8 +14,8 @@ import sys
 import random
 
 input_list = []
-for val in range(1,len(sys.argv)):
-	input_list.append(int(sys.argv[val]))
+for val in sys.argv[1:]:
+	input_list.append(int(val))
 
 
 total = 0

@@ -15,8 +15,8 @@ import math
 
 prob_list = []
 
-for val in range(1,len(sys.argv)):
-	prob_list.append(float(sys.argv[val]))
+for val in sys.argv[1:]:
+	prob_list.append(float(val))
 
 # check if all command line values are numbers
 for val in prob_list:
