@@ -26,6 +26,8 @@
 import mcb185
 import sys
 
+file = sys.argv[1]
+
 def KD_calc(seq):
 	total = 0
 	for aa in seq:
@@ -71,7 +73,7 @@ def h_phob_alpha_helix(seq, kd_threshold):
 	return is_h_phob_alpha_helix
 
 # signal peptide
-for defline, seq in mcb185.read_fasta(sys.argv[1]):
+for defline, seq in mcb185.read_fasta(file):
 	if len(seq) <= 30: continue
 	win = 8
 	signal = False

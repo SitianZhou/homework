@@ -26,7 +26,6 @@ with gzip.open(sys.argv[1], 'rt') as fp:
 		for i in range(len(aas)):
 			aa = aas[i]
 			caa[i] += line.count(aa)
-#print(caa)
 for aa, caa in zip(aas, caa,):
 	print(f'{aa} {caa} {caa/total:.4f}')
 
