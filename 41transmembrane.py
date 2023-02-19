@@ -74,7 +74,7 @@ def h_phob_alpha_helix(seq, kd_threshold):
 
 # signal peptide
 for defline, seq in mcb185.read_fasta(file):
-	if len(seq) <= 30: continue
+	if len(seq) <= 40: continue
 	win = 8
 	signal = False
 	for i in range(0,30-win):
