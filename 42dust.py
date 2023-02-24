@@ -41,8 +41,7 @@ def entropy_calc(seq):
 
 myseq = ''
 for defline, seq in mcb185.read_fasta(file):
-	for i in range(0, len(seq), win):
-		myseq += seq[i:i+win]
+	myseq += seq
 
 # converting windows w/ entropy lower than the threshold to N
 for i in range(len(myseq)):

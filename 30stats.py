@@ -23,11 +23,11 @@ mean = total/count
 mylist.sort()
 
 # find median
-mid_pos = len(mylist)
+mid_pos = int(len(mylist)/2)
 if len(mylist)%2 == 1:
-	median = mylist[int((mid_pos-1)/2)]
+	median = mylist[mid_pos]
 else:
-	median = (mylist[int(mid_pos/2-1)] + mylist[int(mid_pos/2)])/2
+	median = (mylist[mid_pos-1] + mylist[mid_pos])/2
 
 # sd
 squared_tot = 0
