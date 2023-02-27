@@ -22,11 +22,11 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Entropy filter')
 parser.add_argument('file', type=str, metavar='<path>', help='some file')
-parser.add_argument('--w', required=False, type=int, default = 11,
+parser.add_argument('-w', required=False, type=int, default = 11,
 	metavar='<int>', help='required integer argument')
-parser.add_argument('--t', required=False, type=float, default = 1.4,
+parser.add_argument('-t', required=False, type=float, default = 1.4,
 	metavar='<float>', help='required floating point argument')
-parser.add_argument('--soft', action='store_true', 
+parser.add_argument('-s', action='store_true', 
 	help='on/off lowercase masking')
 arg = parser.parse_args()
 
@@ -54,14 +54,15 @@ def entropy_filter(seq, win, threshold):
 	else:             filter = False
 	return filter
 
+# convert nt to uppercase
 myseq = ''
 for defline, seq in mcb185.read_fasta(file):
 	myseq += seq.upper()
 
-
+# convert windows w/ entropy lower than threshold to Ns/lowercase
 for i in range(len(myseq)):
 	if entropy_filter(seq[i:i+win], win, threshold):
-		if arg.soft:
+		if arg.s:
 			sub_seq = seq[i:i+win].lower()
 			myseq = myseq[:i] + sub_seq + myseq[i+win:]
 		else: myseq = myseq[:i] + "N"*win + myseq[i+win:]
