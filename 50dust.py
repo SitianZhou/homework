@@ -57,22 +57,21 @@ def entropy_filter(seq, win, threshold):
 # convert nt to uppercase
 myseq = ''
 for defline, seq in mcb185.read_fasta(file):
-	myseq += seq.upper()
-
-# convert windows w/ entropy lower than threshold to Ns/lowercase
-for i in range(len(myseq)):
-	if entropy_filter(seq[i:i+win], win, threshold):
-		if arg.s:
-			sub_seq = seq[i:i+win].lower()
-			myseq = myseq[:i] + sub_seq + myseq[i+win:]
-		else: myseq = myseq[:i] + "N"*win + myseq[i+win:]
-	else: continue
-
-# output
-print(f'>{defline}')
-for i in range(0,len(myseq),60):
-	print(myseq[i:i+60])
-
+	seq_2 = seq.upper()
+	# convert windows w/ entropy lower than threshold to Ns/lowercase
+	for i in range(len(seq)):
+		if entropy_filter(seq[i:i+win], win, threshold):
+			if arg.s:
+				sub_seq = seq[i:i+win].lower()
+				seq_2 = seq_2[:i] + sub_seq + seq_2[i+win:]
+			else: seq_2 = seq_2[:i] + "N"*win + seq_2[i+win:]
+		else: continue
+		
+	# output
+	print(f'>{defline}')
+	for i in range(0,len(seq_2),60):
+		print(seq_2[i:i+60])
+	
 
 """
 python3 50dust.py -w 11 -t 1.4 -s e.coli.fna  | head
