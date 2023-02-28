@@ -54,7 +54,6 @@ def entropy_filter(seq, win, threshold):
 	else:             filter = False
 	return filter
 
-# convert nt to uppercase
 myseq = ''
 for defline, seq in mcb185.read_fasta(file):
 	seq_2 = seq.upper()
