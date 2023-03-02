@@ -30,6 +30,7 @@ parser.add_argument('-s', action='store_true',
 	help='on/off lowercase masking')
 arg = parser.parse_args()
 
+# entropy filter
 def entropy_filter(seq, win, threshold):
 	c_a = 0
 	c_c = 0
@@ -49,11 +50,11 @@ def entropy_filter(seq, win, threshold):
 	if h < threshold: filter = True
 	else:             filter = False
 	return filter
-
+# convert seq to uppercase and save it to a new seq
 myseq = ''
 for defline, seq in mcb185.read_fasta(arg.file):
 	seq_2 = seq.upper()
-
+	# convert windows w/ entropy lower than threshold to Ns/lowercase
 	for i in range(len(seq)-arg.w):
 		if entropy_filter(seq[i:i+arg.w], arg.w, arg.t):
 			if arg.s:
@@ -61,7 +62,7 @@ for defline, seq in mcb185.read_fasta(arg.file):
 				seq_2 = seq_2[:i] + sub_seq + seq_2[i+arg.w:]
 			else: seq_2 = seq_2[:i] + "N"*arg.w + seq_2[i+arg.w:]
 		else: continue
-
+	# output
 	print(f'>{defline}')
 	for i in range(0,len(seq_2),60):
 		print(seq_2[i:i+60])
