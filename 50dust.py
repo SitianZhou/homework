@@ -55,7 +55,7 @@ myseq = ''
 for defline, seq in mcb185.read_fasta(arg.file):
 	seq_2 = seq.upper()
 	# convert windows w/ entropy lower than threshold to Ns/lowercase
-	for i in range(len(seq)-arg.w):
+	for i in range(len(seq)-arg.w+1):
 		if entropy_filter(seq[i:i+arg.w], arg.w, arg.t):
 			if arg.s:
 				sub_seq = seq[i:i+arg.w].lower()
