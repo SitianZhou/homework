@@ -30,10 +30,6 @@ parser.add_argument('-s', action='store_true',
 	help='on/off lowercase masking')
 arg = parser.parse_args()
 
-file = arg.file
-win = arg.w
-threshold = arg.t
-
 def entropy_filter(seq, win, threshold):
 	c_a = 0
 	c_c = 0
@@ -41,10 +37,10 @@ def entropy_filter(seq, win, threshold):
 	c_t = 0
 
 	for nt in seq:
-		if nt == "A":   c_a += 1
-		elif nt == "C": c_c += 1
-		elif nt == "G": c_g += 1
-		else:           c_t += 1
+		if nt == "A" or nt == "a":   c_a += 1
+		elif nt == "C" or nt == "c": c_c += 1
+		elif nt == "G" or nt == "g": c_g += 1
+		elif nt == "T" or nt == "t": c_t += 1
 	prob_list = [c_a/win, c_c/win, c_g/win, c_t/win]
 	h = 0
 	for p_i in prob_list: 
@@ -55,18 +51,17 @@ def entropy_filter(seq, win, threshold):
 	return filter
 
 myseq = ''
-for defline, seq in mcb185.read_fasta(file):
+for defline, seq in mcb185.read_fasta(arg.file):
 	seq_2 = seq.upper()
-	# convert windows w/ entropy lower than threshold to Ns/lowercase
-	for i in range(len(seq)):
-		if entropy_filter(seq[i:i+win], win, threshold):
+
+	for i in range(len(seq)-arg.w):
+		if entropy_filter(seq[i:i+arg.w], arg.w, arg.t):
 			if arg.s:
-				sub_seq = seq[i:i+win].lower()
-				seq_2 = seq_2[:i] + sub_seq + seq_2[i+win:]
-			else: seq_2 = seq_2[:i] + "N"*win + seq_2[i+win:]
+				sub_seq = seq[i:i+arg.w].lower()
+				seq_2 = seq_2[:i] + sub_seq + seq_2[i+arg.w:]
+			else: seq_2 = seq_2[:i] + "N"*arg.w + seq_2[i+arg.w:]
 		else: continue
-		
-	# output
+
 	print(f'>{defline}')
 	for i in range(0,len(seq_2),60):
 		print(seq_2[i:i+60])
