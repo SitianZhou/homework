@@ -24,8 +24,8 @@ read_len = int(sys.argv[3])
 seq = [0]*genome_size
 for i in range(read_num):
 	r = random.randint(0, genome_size-read_len)
-	for nt in range(0, read_len):
-		seq[r+nt] += 1
+	for j in range(0, read_len):
+		seq[r+j] += 1
 
 print(f'{min(seq[read_len-1:-(read_len-1)])}', end = ' ')
 print(f'{max(seq[read_len-1:-(read_len-1)])}', end = ' ')
