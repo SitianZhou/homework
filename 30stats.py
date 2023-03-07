@@ -23,7 +23,7 @@ mean = total/count
 mylist.sort()
 
 # find median
-mid_pos = int(len(mylist)/2)
+mid_pos = len(mylist)//2
 if len(mylist)%2 == 1:
 	median = mylist[mid_pos]
 else:
